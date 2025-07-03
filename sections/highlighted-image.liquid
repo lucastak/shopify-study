@@ -1,0 +1,71 @@
+<style>
+    .highlighted-image__title{
+        text-align: center;
+    }
+
+    .highlighted-image__image{
+        height: 400px;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    .highlighted-image__button-container {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+
+<h2 class="highlighted-image__title">{{ section.settings.title }}</h2>
+
+{% if section.settings.image != blank %}
+    {{ section.settings.image | image_url: width: 1000, height: 500 | image_tag: class: 'highlighted-image__image' }}
+{% else %}
+    {{ 'hero-apparel-1' |  placeholder_svg_tag: 'highlighted-image__image' }}
+{% endif %}
+
+{% if section.settings.button_text != blank %}
+    <div class="highlighted-image__button-container">
+        <a href="{{ section.settings.button_url }}" class="button">
+            {{ section.settings.button_text }}
+        </a>
+    </div>
+{% endif %}
+
+{% schema %}
+    {
+        "name": "Highlighted Image Section",
+        "settings": [
+            {
+                "type": "text",
+                "label": "Title",
+                "id": "title",
+                "default": "Highlighted Image"
+            },
+            {
+                "type": "image_picker",
+                "label": "image",
+                "id": "image"
+            },
+            {
+                "type": "text",
+                "label": "Button Text",
+                "id": "button_text",
+            },
+            {
+                "type": "url",
+                "label": "Button URL",
+                "id": "button_url"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Highlighted Imagae",
+                "settings": {
+                    "title": "Highlighted Image",
+                    "button_text": "Learn More",
+                    "button_url": "/"
+                }
+            }
+        ]
+    }
+{% endschema %}

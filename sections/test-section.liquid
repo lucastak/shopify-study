@@ -1,0 +1,83 @@
+<h2 style="text-align: {{ section.settings.title_alignment }}">{{ section.settings.title }}</h2>
+{% for block in section.blocks %}
+    {% if block.type == 'Promotion' %}
+        <div class="promotion-block">
+            <p>{{ block.settings.promotion_text }}</p>
+            {% if block.settings.promotion_image %}
+                <img src="{{ block.settings.promotion_image | image_url: width: 240, height: 240 }}" alt="{{ block.settings.promotion_text }}" width="240" height="240">
+            {% endif %}
+        </div>
+    {% endif %}
+{% endfor %}
+
+{% schema %}
+
+{
+    "name": "Test Section",
+    "tag": "section",
+    "class": "test-section",
+    "settings": [
+        {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "This is a test section"
+        },
+        {
+            "type": "select",
+            "id": "title_alignment",
+            "label": "Title Alignment",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ],
+            "default": "left"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "Promotion",
+            "name": "Promotion",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "promotion_text",
+                    "label": "Promotion Text",
+                    "default": "This is a promotion"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "promotion_image",
+                    "label": "Promotion Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Test Section",
+            "settings": {
+                "title": "This is a test section",
+                "title_alignment": "left"
+            }
+        },
+        {
+            "name": "Test Section2",
+            "settings": {
+                "title": "This is a test section2",
+                "title_alignment": "right"
+            }
+        }
+    ]
+}
+{% endschema %}
