@@ -28,6 +28,16 @@
         "name": "dimension",
         "category": "MEASUREMENT"
       }
+    },
+    {
+      "key": "example_metafield",
+      "namespace": "custom",
+      "name": "Example Metafield",
+      "description": "This is some text help",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
     }
   ],
   "variant": [],

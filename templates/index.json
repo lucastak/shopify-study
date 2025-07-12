@@ -9,6 +9,13 @@
  */
 {
   "sections": {
+    "all_products_6AkbYd": {
+      "type": "all-products",
+      "name": "All Products",
+      "settings": {
+        "products_per_row": 3
+      }
+    },
     "test_section_CDGKNm": {
       "type": "test-section",
       "blocks": {
@@ -106,6 +113,7 @@
     }
   },
   "order": [
+    "all_products_6AkbYd",
     "test_section_CDGKNm",
     "image_banner",
     "featured_collection"
