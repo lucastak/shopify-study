@@ -1,0 +1,54 @@
+<div class="cart-content">AJAX</div>
+
+<script>
+    async function getCart(){
+        const cartRequest = await fetch(`${window.Shopify.routes.root}cart.js`);
+        const cart = await cartRequest.json();
+
+        const cartContentDIV = document.querySelector('.cart-content');
+        cartContentDIV.textContent = `Cart content itens: ${cart.item_count} <br>`
+
+    }
+
+    function addCart(variantId, quantity){
+        const data = {
+            items: [{
+                id: variantId,
+                quantity: quantity,
+            }]
+        };
+
+        fetch(`/cart/add.js`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            getCart();
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+
+    function ajaxAPI() {
+        getCart();
+       //addCart(41895085736026, 1);
+    }
+
+    ajaxAPI();
+</script>
+{%  schema  %}
+    {
+        "name": "Ajax API",
+        "presets": [
+            {
+                "name": "Ajax API"
+            }
+        ]
+    }
+{% endschema %}
