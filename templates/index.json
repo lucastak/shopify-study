@@ -9,6 +9,14 @@
  */
 {
   "sections": {
+    "buy_together_9VfdmN": {
+      "type": "buy-together",
+      "name": "Buy Together Section",
+      "settings": {
+        "title": "Buy Together",
+        "product": "the-complete-snowboard"
+      }
+    },
     "all_products_6AkbYd": {
       "type": "all-products",
       "name": "All Products",
@@ -113,6 +121,7 @@
     }
   },
   "order": [
+    "buy_together_9VfdmN",
     "all_products_6AkbYd",
     "test_section_CDGKNm",
     "image_banner",

@@ -1,0 +1,21 @@
+.buy-card {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 6px;
+}
+
+.buy-card.selected {
+    border-color: #2e7d32;
+    background-color: #f1f8e9;
+}
+
+.select-button {
+    margin-top: 0.5rem;
+}
+
+.summary-container {
+    padding-top: 1rem;
+    border-top: 1px solid #ccc;
+}
+  

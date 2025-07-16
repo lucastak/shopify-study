@@ -1,0 +1,57 @@
+<div 
+  class="buy-together" 
+  data-section-id="{{ section.id }}"
+>
+  <h2>{{ section.settings.title }}</h2>
+
+  <buy-together>
+    <div class="main-product">
+      {% if section.settings.product %}
+        {% render 'main-card-buy-together', product: section.settings.product %}
+      {% endif %}
+    </div>
+
+    <div class="product-recommended">
+      {% for related_product in section.settings.product.metafields.custom.produtos_compre_junto.value limit: 4 %}
+        {% render 'card-buy-together', product: related_product %}
+      {% endfor %}
+    </div>
+
+    <div class="buy-items-container" id="buy-items-container">
+      {% render 'buy-items-container', quantity: 0 %}
+    </div>
+  </buy-together>
+</div>
+
+<!-- Importação de scripts e estilos -->
+{{ 'buy-together.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'buy-together.js' | asset_url }}" async></script>
+
+{% schema %}
+{
+  "name": "Buy Together",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Buy Together Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Buy Together"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Main Product"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Buy Together Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
